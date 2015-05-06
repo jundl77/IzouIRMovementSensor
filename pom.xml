@@ -12,7 +12,7 @@
 
     <properties>
         <plugin.id>leanderk.izou.irsensor</plugin.id>
-        <plugin.class>path.to.the.ZipFileManager</plugin.class>
+        <plugin.class>leanderk.izou.irsensor.ZipFileManager</plugin.class>
         <plugin.version>${project.version}</plugin.version>
         <plugin.provider>Leander Kurscheidt</plugin.provider>
         <plugin.dependencies />
@@ -27,6 +27,11 @@
             <groupId>org.intellimate.izou</groupId>
             <artifactId>sdk</artifactId>
             <version>[0.5.0, 1.0.0)</version>
+        </dependency>
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-core</artifactId>
+            <version>1.0</version>
         </dependency>
     </dependencies>
 

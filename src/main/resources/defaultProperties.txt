@@ -1,0 +1,2 @@
+#provide a tag with 'pin=' to change the GIP pin of the motion sensor,
+#the default (or if the tag was wrong) is RaspiPin.GPIO_05
