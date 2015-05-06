@@ -4,20 +4,20 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId></groupId>
-    <artifactId></artifactId>
+    <groupId>leanderk.izou</groupId>
+    <artifactId>irsensor</artifactId>
     <packaging>jar</packaging>
-    <version></version>
-    <name></name>
+    <version>0.5</version>
+    <name>IRMovementSensor</name>
 
     <properties>
-        <plugin.id></plugin.id>
+        <plugin.id>leanderk.izou.irsensor</plugin.id>
         <plugin.class>path.to.the.ZipFileManager</plugin.class>
         <plugin.version>${project.version}</plugin.version>
-        <plugin.provider></plugin.provider>
+        <plugin.provider>Leander Kurscheidt</plugin.provider>
         <plugin.dependencies />
-        <repo.name></repo.name>
-        <repo.owner></repo.owner>
+        <repo.name>IzouIRMovementSensor</repo.name>
+        <repo.owner>LeanderK</repo.owner>
         <!-- github server corresponds to entry in ~/.m2/settings.xml -->
         <github.global.server>github</github.global.server>
     </properties>
