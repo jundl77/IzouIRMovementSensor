@@ -13,24 +13,31 @@ import org.intellimate.izou.sdk.frameworks.presence.provider.template.PresenceNo
  */
 public class IRActivator extends PresenceNonConstant implements GpioPinListenerDigital {
     public static final String ID = IRActivator.class.getCanonicalName();
+    private final GpioController gpio;
 
     public IRActivator(Context context, GpioController gpio) {
-        super(context, ID, true);
-        GpioController gpio1 = gpio;
+        super(context, ID, true, true);
+        debug("initializing gpio");
+        this.gpio = gpio;
         String pinName = getContext().getPropertiesAssistant().getProperties("pin");
         Pin pin = null;
         if (pinName != null) {
             pin = RaspiPin.getPinByName(pinName);
-            if (pin == null)
+            if (pin == null) {
                 error("invalid pin name: " + pinName);
+                pin = RaspiPin.GPIO_05;
+            }
         }
         if (pin == null) {
             pin = RaspiPin.GPIO_05;
         }
+        debug("pin is: " + pin.getName());
         GpioPinDigitalInput motionSensor = gpio.provisionDigitalInputPin(pin, "State", PinPullResistance.PULL_UP);
         if(motionSensor.isHigh()){
+            debug("sensed movement");
             userEncountered();
         }
+        motionSensor.addListener(this);
     }
 
     @Override
@@ -40,6 +47,7 @@ public class IRActivator extends PresenceNonConstant implements GpioPinListenerD
 
     @Override
     public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
+        debug("sensor state changed to " + event.getState().isHigh());
         if (event.getState().isHigh()) {
             userEncountered();
         }

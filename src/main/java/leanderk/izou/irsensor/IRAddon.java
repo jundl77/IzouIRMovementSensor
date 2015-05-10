@@ -8,23 +8,25 @@ import org.intellimate.izou.output.OutputExtensionModel;
 import org.intellimate.izou.output.OutputPluginModel;
 import org.intellimate.izou.sdk.addon.AddOn;
 import org.intellimate.izou.sdk.contentgenerator.ContentGenerator;
+import ro.fortsoft.pf4j.Extension;
 
 /**
  * the addon-class
  * @author LeanderK
  * @version 1.0
  */
+@Extension
 public class IRAddon extends AddOn {
     public static final String ID = IRAddon.class.getCanonicalName();
     GpioController gpio;
 
-    public IRAddon(String addOnID) {
-        super(addOnID);
+    public IRAddon() {
+        super(ID);
     }
 
     @Override
     public void prepare() {
-        GpioController instance = GpioFactory.getInstance();
+        gpio = GpioFactory.getInstance();
     }
 
     @Override
