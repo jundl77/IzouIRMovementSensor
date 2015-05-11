@@ -3,6 +3,7 @@ package leanderk.izou.irsensor;
 import com.pi4j.io.gpio.*;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
+import org.intellimate.izou.events.EventModel;
 import org.intellimate.izou.sdk.Context;
 import org.intellimate.izou.sdk.frameworks.presence.provider.template.PresenceNonConstant;
 
@@ -16,9 +17,13 @@ public class IRActivator extends PresenceNonConstant implements GpioPinListenerD
     private final GpioController gpio;
 
     public IRActivator(Context context, GpioController gpio) {
-        super(context, ID, true, true);
-        debug("initializing gpio");
+        super(context, ID, true, true, true);
         this.gpio = gpio;
+    }
+
+    @Override
+    public void activatorStarts() {
+        debug("initializing gpio");
         String pinName = getContext().getPropertiesAssistant().getProperties("pin");
         Pin pin = null;
         if (pinName != null) {
@@ -38,10 +43,6 @@ public class IRActivator extends PresenceNonConstant implements GpioPinListenerD
             userEncountered();
         }
         motionSensor.addListener(this);
-    }
-
-    @Override
-    public void activatorStarts() {
         stop();
     }
 
@@ -51,5 +52,16 @@ public class IRActivator extends PresenceNonConstant implements GpioPinListenerD
         if (event.getState().isHigh()) {
             userEncountered();
         }
+    }
+
+    /**
+     * Invoked when an activator-event occurs.
+     *
+     * @param event an instance of Event
+     */
+    @Override
+    public void eventFired(EventModel event) {
+        debug("notified");
+        super.eventFired(event);
     }
 }

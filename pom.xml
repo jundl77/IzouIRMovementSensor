@@ -7,13 +7,12 @@
     <groupId>leanderk.izou</groupId>
     <artifactId>irsensor</artifactId>
     <packaging>jar</packaging>
-    <version>0.5</version>
+    <version>0.6</version>
     <name>IRMovementSensor</name>
 
     <properties>
         <plugin.id>leanderk.izou.irsensor</plugin.id>
         <plugin.class>leanderk.izou.irsensor.ZipFileManager</plugin.class>
-        <plugin.version>${project.version}</plugin.version>
         <plugin.provider>Leander Kurscheidt</plugin.provider>
         <plugin.dependencies />
         <repo.name>IzouIRMovementSensor</repo.name>
@@ -172,7 +171,7 @@
                         <manifestEntries>
                             <Plugin-Id>${plugin.id}</Plugin-Id>
                             <Plugin-Class>${plugin.class}</Plugin-Class>
-                            <Plugin-Version>${plugin.version}</Plugin-Version>
+                            <Plugin-Version>${project.version}</Plugin-Version>
                             <Plugin-Provider>${plugin.provider}</Plugin-Provider>
                             <Plugin-Dependencies>${plugin.dependencies}</Plugin-Dependencies>
                         </manifestEntries>
