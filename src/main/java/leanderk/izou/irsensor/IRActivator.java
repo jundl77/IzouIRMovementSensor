@@ -24,7 +24,7 @@ public class IRActivator extends PresenceNonConstant implements GpioPinListenerD
     @Override
     public void activatorStarts() {
         debug("initializing gpio");
-        String pinName = getContext().getPropertiesAssistant().getProperties("pin");
+        String pinName = getContext().getPropertiesAssistant().getProperty("pin");
         Pin pin = null;
         if (pinName != null) {
             pin = RaspiPin.getPinByName(pinName);
