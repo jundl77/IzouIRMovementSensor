@@ -4,6 +4,7 @@ import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import org.intellimate.izou.activator.ActivatorModel;
 import org.intellimate.izou.events.EventsControllerModel;
+import org.intellimate.izou.output.OutputControllerModel;
 import org.intellimate.izou.output.OutputExtensionModel;
 import org.intellimate.izou.output.OutputPluginModel;
 import org.intellimate.izou.sdk.addon.AddOn;
@@ -38,21 +39,26 @@ public class IRAddon extends AddOn {
 
     @Override
     public ContentGenerator[] registerContentGenerator() {
-        return new ContentGenerator[0];
+        return null;
     }
 
     @Override
     public EventsControllerModel[] registerEventController() {
-        return new EventsControllerModel[0];
+        return null;
     }
 
     @Override
     public OutputPluginModel[] registerOutputPlugin() {
-        return new OutputPluginModel[0];
+        return null;
     }
 
     @Override
     public OutputExtensionModel[] registerOutputExtension() {
-        return new OutputExtensionModel[0];
+        return null;
+    }
+
+    @Override
+    public OutputControllerModel[] registerOutputController() {
+        return null;
     }
 }
